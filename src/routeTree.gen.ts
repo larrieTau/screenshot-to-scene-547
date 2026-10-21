@@ -11,6 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as ConsoleRouteImport } from './routes/console'
+import { Route as MyCutsRouteImport } from './routes/my-cuts'
+import { Route as OfferRouteImport } from './routes/offer'
+import { Route as ProRouteImport } from './routes/pro'
+import { Route as QueueRouteImport } from './routes/queue'
 import { Route as BarberIdRouteImport } from './routes/barber.$id'
 import { Route as SlipRefRouteImport } from './routes/slip.$ref'
 
@@ -22,6 +27,31 @@ const IndexRoute = IndexRouteImport.update({
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsoleRoute = ConsoleRouteImport.update({
+  id: '/console',
+  path: '/console',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyCutsRoute = MyCutsRouteImport.update({
+  id: '/my-cuts',
+  path: '/my-cuts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfferRoute = OfferRouteImport.update({
+  id: '/offer',
+  path: '/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProRoute = ProRouteImport.update({
+  id: '/pro',
+  path: '/pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueRoute = QueueRouteImport.update({
+  id: '/queue',
+  path: '/queue',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BarberIdRoute = BarberIdRouteImport.update({
@@ -38,12 +68,22 @@ const SlipRefRoute = SlipRefRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/console': typeof ConsoleRoute
+  '/my-cuts': typeof MyCutsRoute
+  '/offer': typeof OfferRoute
+  '/pro': typeof ProRoute
+  '/queue': typeof QueueRoute
   '/barber/$id': typeof BarberIdRoute
   '/slip/$ref': typeof SlipRefRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/console': typeof ConsoleRoute
+  '/my-cuts': typeof MyCutsRoute
+  '/offer': typeof OfferRoute
+  '/pro': typeof ProRoute
+  '/queue': typeof QueueRoute
   '/barber/$id': typeof BarberIdRoute
   '/slip/$ref': typeof SlipRefRoute
 }
@@ -51,20 +91,58 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/console': typeof ConsoleRoute
+  '/my-cuts': typeof MyCutsRoute
+  '/offer': typeof OfferRoute
+  '/pro': typeof ProRoute
+  '/queue': typeof QueueRoute
   '/barber/$id': typeof BarberIdRoute
   '/slip/$ref': typeof SlipRefRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book' | '/barber/$id' | '/slip/$ref'
+  fullPaths:
+    | '/'
+    | '/book'
+    | '/console'
+    | '/my-cuts'
+    | '/offer'
+    | '/pro'
+    | '/queue'
+    | '/barber/$id'
+    | '/slip/$ref'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book' | '/barber/$id' | '/slip/$ref'
-  id: '__root__' | '/' | '/book' | '/barber/$id' | '/slip/$ref'
+  to:
+    | '/'
+    | '/book'
+    | '/console'
+    | '/my-cuts'
+    | '/offer'
+    | '/pro'
+    | '/queue'
+    | '/barber/$id'
+    | '/slip/$ref'
+  id:
+    | '__root__'
+    | '/'
+    | '/book'
+    | '/console'
+    | '/my-cuts'
+    | '/offer'
+    | '/pro'
+    | '/queue'
+    | '/barber/$id'
+    | '/slip/$ref'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookRoute: typeof BookRoute
+  ConsoleRoute: typeof ConsoleRoute
+  MyCutsRoute: typeof MyCutsRoute
+  OfferRoute: typeof OfferRoute
+  ProRoute: typeof ProRoute
+  QueueRoute: typeof QueueRoute
   BarberIdRoute: typeof BarberIdRoute
   SlipRefRoute: typeof SlipRefRoute
 }
@@ -83,6 +161,41 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/console': {
+      id: '/console'
+      path: '/console'
+      fullPath: '/console'
+      preLoaderRoute: typeof ConsoleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-cuts': {
+      id: '/my-cuts'
+      path: '/my-cuts'
+      fullPath: '/my-cuts'
+      preLoaderRoute: typeof MyCutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offer': {
+      id: '/offer'
+      path: '/offer'
+      fullPath: '/offer'
+      preLoaderRoute: typeof OfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pro': {
+      id: '/pro'
+      path: '/pro'
+      fullPath: '/pro'
+      preLoaderRoute: typeof ProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue': {
+      id: '/queue'
+      path: '/queue'
+      fullPath: '/queue'
+      preLoaderRoute: typeof QueueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/barber/$id': {
@@ -105,6 +218,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookRoute: BookRoute,
+  ConsoleRoute: ConsoleRoute,
+  MyCutsRoute: MyCutsRoute,
+  OfferRoute: OfferRoute,
+  ProRoute: ProRoute,
+  QueueRoute: QueueRoute,
   BarberIdRoute: BarberIdRoute,
   SlipRefRoute: SlipRefRoute,
 }
